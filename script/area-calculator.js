@@ -32,6 +32,13 @@ function calculateRectangleArea() {
   const length = parseFloat(lengthValueText);
   console.log(length);
 
+  // validate input
+  if (isNaN(width) || isNaN(length)) {
+    alert("Please insert a number");
+    return;
+  }
+
+  // calculate area
   const area = width * length;
   console.log(area);
 
@@ -40,29 +47,25 @@ function calculateRectangleArea() {
   rectangleAreaSpan.innerText = area;
 }
 
-
-
-
-
-
-
-
-
 // reuseable function --> reduce repeatable code
 function calculateParallelogramArea() {
   const base = getInputValue("parallelogram-base");
   const height = getInputValue("parallelogram-height");
-
+  if (isNaN(base) || isNaN(height)) {
+    alert("Please insert a number");
+    return;
+  }
   const area = base * height;
-  setElementInnerText('parallelogram-area', area)
+  setElementInnerText("parallelogram-area", area);
 }
 
-function calculateEllipseArea(){
-  const majorRadius = getInputValue('ellipse-major-radius')
-  const minorRadius = getInputValue('ellipse-minor-radius')
+function calculateEllipseArea() {
+  const majorRadius = getInputValue("ellipse-major-radius");
+  const minorRadius = getInputValue("ellipse-minor-radius");
 
-  const area = 3.14 * majorRadius * minorRadius
-  setElementInnerText('ellipse-area', area)
+  const area = 3.14 * majorRadius * minorRadius;
+  const areaToDecimal = area.toFixed(2);
+  setElementInnerText("ellipse-area", areaToDecimal);
 }
 
 // reusable get input field in number
@@ -78,3 +81,12 @@ function setElementInnerText(elementId, area) {
   const element = document.getElementById(elementId);
   element.innerText = area;
 }
+
+// DATA VALIDATION
+
+/*
+ 1. set the proper type of the input field. (number, data , email)
+ 2. check type using typeof
+ 3. isNaN : Not a Number. isNaN checking whether the input is not a number or not
+ 4.
+ */
