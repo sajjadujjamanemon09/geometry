@@ -17,6 +17,9 @@ function calculateTriangleArea() {
   //   show triangle area
   const areaSpan = document.getElementById("triangle-area");
   areaSpan.innerText = area;
+
+  addToCalculationEntry('Triangle', area)
+
 }
 
 function calculateRectangleArea() {
@@ -45,6 +48,8 @@ function calculateRectangleArea() {
   //   show rectangle area
   const rectangleAreaSpan = document.getElementById("rectangle-area");
   rectangleAreaSpan.innerText = area;
+
+  addToCalculationEntry('Rectangle', area)
 }
 
 // reuseable function --> reduce repeatable code
@@ -69,6 +74,8 @@ function calculateEllipseArea() {
   const area = 3.14 * majorRadius * minorRadius;
   const areaToDecimal = area.toFixed(2);
   setElementInnerText("ellipse-area", areaToDecimal);
+
+  addToCalculationEntry('Ellipse', areaToDecimal)
 }
 
 // reusable get input field in number
@@ -101,6 +108,7 @@ function addToCalculationEntry(areaType, area) {
   const count = calculationEntry.childElementCount;
 
   const p = document.createElement("p");
+  p.classList.add('my-4')
   p.innerHTML = `${
     count + 1
   } ${areaType} ${area} cm<sup>2</sup> <button class="btn btn-sm btn-success">Convert</button>`;
